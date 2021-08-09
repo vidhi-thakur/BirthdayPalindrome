@@ -1,5 +1,5 @@
 # BirthdayPalindrome
- Is your birthday palindrome? Let's check.
+ This is a vanilla JS app to check if your birthday is a palindrome.
 
  ## Current Features: -
  1. Checks if a date is palindrome.
