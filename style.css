@@ -1,0 +1,12 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #C4B5FD;
+    border: 3px solid #7C3AED;
+    min-height: 97vh;
+  }
+  
+  .button {
+    margin-bottom: 1rem;
+  }

@@ -18,7 +18,7 @@ function convertDateToString(date) {
   if (date.day < 10) {
     stringDate.day = '0' + date.day;
   } else {
-    steingDate.day = date.day.toString();
+    stringDate.day = date.day.toString();
   }
 
   if (date.month < 10) {
@@ -112,10 +112,34 @@ function nextPalindromeDate(date) {
 
   while (1) {
     if (checkPalindromeForAllDateFromat(datePalindromeNext)) {
-      counter++;
       break;
     }
+    counter++;
     datePalindromeNext = nextDate(datePalindromeNext)
   }
   return [counter, datePalindromeNext]
+}
+
+const input = document.querySelector('#input-date');
+const btn = document.querySelector('.button');
+const result = document.querySelector('.result');
+
+btn.addEventListener("click", onClickHandler)
+
+function onClickHandler(e) {
+  e.preventDefault();
+
+  var listOfUserInput = input.value.split('-');
+  date = {
+    day: Number(listOfUserInput[2]),
+    month: Number(listOfUserInput[1]),
+    year: Number(listOfUserInput[0])
+  }
+
+  if (checkPalindromeForAllDateFromat(date)) {
+    result.innerText = `YAY!!! Your birtday is a Palindrome! 🎉`
+  } else {
+    var [counter, datePalindromeNext] = nextPalindromeDate(date)
+    result.innerText = `OOPS! Your birtday is not a Palindrome. Next palindrome date is ${datePalindromeNext.day}-${datePalindromeNext.month}-${datePalindromeNext.year} after ${counter} days.`
+  }
 }
