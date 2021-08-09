@@ -1,6 +1,6 @@
 function reverseString(str) {
-    var reverseOfString = str.split('').reverse().join('');
-    return reverseOfString;
+  var reverseOfString = str.split('').reverse().join('');
+  return reverseOfString;
 }
 
 function isPalindrome(str) {
@@ -15,13 +15,13 @@ function convertDateToString(date) {
     year: ""
   }
 
-  if(date.day < 10){
+  if (date.day < 10) {
     stringDate.day = '0' + date.day;
   } else {
     steingDate.day = date.day.toString();
   }
-  
-  if(date.month < 10){
+
+  if (date.month < 10) {
     stringDate.month = '0' + date.month;
   } else {
     stringDate.month = date.month.toString();
@@ -50,8 +50,8 @@ function checkPalindromeForAllDateFromat(date) {
   var listOfDates = getAllDateFormat(date);
   flag = false;
 
-  for(let i = 0; i<listOfDates.length; i++) {
-    if(isPalindrome(listOfDates[i])) {
+  for (let i = 0; i < listOfDates.length; i++) {
+    if (isPalindrome(listOfDates[i])) {
       flag = true;
       break;
     }
@@ -59,10 +59,63 @@ function checkPalindromeForAllDateFromat(date) {
   return flag;
 }
 
-const date = {
-  day: 2,
-  month: 2,
-  year: 2020
+function leapYear(year) {
+  if (year % 400 == 0) {
+    return true;
+  } else if (year % 100 == 0) {
+    return false;
+  } else if (year % 4 == 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-console.log(checkPalindromeForAllDateFromat(date))
+function nextDate(date) {
+  var nextDate = {
+    day: date.day + 1,
+    month: date.month,
+    year: date.year
+  }
+
+  const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+  // for FEB
+  if (nextDate.month == 2) {
+    if (leapYear(nextDate.year)) {
+      if (nextDate.day > 29) {
+        nextDate.day = 1;
+        nextDate.month++;
+      }
+    } else {
+      if (nextDate.day > 28) {
+        nextDate.day = 1;
+        nextDate.month++;
+      }
+    }
+  }
+  if (nextDate.day > daysInMonth[nextDate.month - 1]) {
+    nextDate.day = 1;
+    nextDate.month++;
+  }
+  if (nextDate.month > 12) {
+    nextDate.month = 1,
+      nextDate.year++;
+  }
+
+  return nextDate
+}
+
+function nextPalindromeDate(date) {
+  var counter = 0;
+  var datePalindromeNext = nextDate(date)
+
+  while (1) {
+    if (checkPalindromeForAllDateFromat(datePalindromeNext)) {
+      counter++;
+      break;
+    }
+    datePalindromeNext = nextDate(datePalindromeNext)
+  }
+  return [counter, datePalindromeNext]
+}
