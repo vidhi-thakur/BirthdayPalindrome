@@ -18,6 +18,10 @@ li {
 }
 
 footer {
-    padding-top: 10rem;
+    padding-top: 25rem;
     padding-bottom: 1rem;
+}
+
+a {
+  color: #7C3AED;
 }
