@@ -1,12 +1,23 @@
 .body {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background-color: #C4B5FD;
-    border: 3px solid #7C3AED;
-    min-height: 97vh;
-  }
-  
-  .button {
-    margin-bottom: 1rem;
-  }
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #C4B5FD;
+  border: 3px solid #7C3AED;
+  height: 97vh;
+}
+
+.button {
+  margin-bottom: 1rem;
+}
+
+li {
+    list-style: none;
+    display: inline;
+    margin-right: 1rem;
+}
+
+footer {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
