@@ -107,7 +107,7 @@ function nextDate(date) {
 }
 
 function nextPalindromeDate(date) {
-  var counter = 0;
+  var counter = 1;
   var datePalindromeNext = nextDate(date)
 
   while (1) {
